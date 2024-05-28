@@ -224,7 +224,7 @@ function Home() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 temp">
               <div
                 className="p-4 border border-white rounded-md"
-                style={{ height: "580px" }}
+                style={{ height: "540px" }}
               >
                 <form className="space-y-6" onSubmit={handlePublish}>
                   <div>
@@ -252,7 +252,7 @@ function Home() {
                         value={content}
                         onChange={setContent}
                         placeholder="Write your blog content here"
-                        style={{ height: "300px"}}
+                        style={{ height: "260px"}}
                         modules={{
                           toolbar: [
                             [{ header: "1" }, { header: "2" }, { font: [] }],
@@ -301,7 +301,7 @@ function Home() {
                 </Button>
                 <div
                   className="border border-white p-4 rounded-md h-96 overflow-auto"
-                  style={{ height: "475px" }}
+                  style={{ height: "435px" }}
                 >
                   <h3 className="text-2xl font-bold">{title}</h3>
                   <p className="text-sm text-gray-500">
