@@ -98,9 +98,9 @@ function Home() {
       <br />
       <Tabs defaultValue="feed" className="w-full">
         <TabsList>
-          <TabsTrigger value="feed">🎙️ Feed</TabsTrigger>
-          <TabsTrigger value="announcement">📣 Announcements</TabsTrigger>
-          <TabsTrigger value="createentry">🔗 Create New Entry</TabsTrigger>
+          <TabsTrigger value="feed" className="menubar">🎙️ Feed</TabsTrigger>
+          <TabsTrigger value="announcement" className="menubar">📣 Announcements</TabsTrigger>
+          <TabsTrigger value="createentry" className="menubar">🔗 Create New Entry</TabsTrigger>
         </TabsList>
         <br />
         <TabsContent value="feed" className="feed">
@@ -118,7 +118,7 @@ function Home() {
                 </p>
                 <div
                   dangerouslySetInnerHTML={{
-                    __html: post.content.substring(0, 200),
+                    __html: post.content.substring(0, 160),
                   }}
                 />
                 <br></br>
@@ -150,6 +150,7 @@ function Home() {
                             }}
                           />
                         </div>
+                        
                       </>
                     )}
                   </DialogContent>

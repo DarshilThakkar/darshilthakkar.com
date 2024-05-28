@@ -282,7 +282,7 @@ function App() {
                   Dark Mode
                 </Button>
               )}
-              <>{}</>Beta Mode 😅
+             <div className="mt-4 inline-block">Beta Version 😅</div>
             </PopoverContent>
           </Popover>
         </div>
