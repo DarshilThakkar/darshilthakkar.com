@@ -68,14 +68,14 @@
 
 .right-nav-buttons {
   margin-top: 10px;
-  margin-left: 2720px;
+  margin-left: 2520px;
   position: absolute;
   font-size: 100%;
 }
 
 .right-nav-button-signout {
   margin-top: 10px;
-  margin-left: 2720px;
+  margin-left: 2520px;
   position: absolute;
   font-size: 100%;
 }
@@ -99,7 +99,7 @@
 }
 .main-menu {
   width: 280px;
-  margin-left: 530px;
+  margin-left: 480px;
   margin-top: 20px;
   position: absolute;
   left: 50%;
@@ -108,7 +108,7 @@
 
 .pover{
   margin-top: 10px;
-  margin-left: 2520px;
+  margin-left: 2300px;
   position: absolute;
   font-size: 100%;
 }
