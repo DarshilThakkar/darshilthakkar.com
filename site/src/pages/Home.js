@@ -301,7 +301,7 @@ function Home() {
                 </Button>
                 <div
                   className="border border-white p-4 rounded-md h-96 overflow-auto"
-                  style={{ height: "430px" }}
+                  style={{ height: "431px" }}
                 >
                   <h3 className="text-2xl font-bold">{title}</h3>
                   <p className="text-sm text-gray-500">
