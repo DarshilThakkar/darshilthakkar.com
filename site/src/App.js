@@ -102,7 +102,6 @@ ListItem.displayName = "ListItem";
 
 function App() {
   const [isAuth, setIsAuth] = useState(false);
-  const [isDark, setIsDark] = useState(true);
   const [user, setUser] = useState(null);
 
   const signInWithGoogle = () => {
@@ -115,17 +114,31 @@ function App() {
     });
   };
 
+  const [isDark, setIsDark] = useState(false);
+
   const enableDark = () => {
     setIsDark(true);
     const html = document.body;
-    html.classList.toggle("dark");
+    if (!html.classList.contains('dark')) {
+      html.classList.add('dark');
+    }
   };
 
   const enableLight = () => {
     setIsDark(false);
     const html = document.body;
-    html.classList.toggle("dark");
+    if (html.classList.contains('dark')) {
+      html.classList.remove('dark');
+    }
   };
+
+  useEffect(() => {
+    const navDiv = document.querySelector('.ourNav');
+    if (navDiv) {
+      enableDark();
+    } else {
+    }
+  }, []);
 
   const signUserOut = () => {
     signOut(auth).then(() => {
