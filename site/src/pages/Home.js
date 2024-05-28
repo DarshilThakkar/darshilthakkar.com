@@ -252,7 +252,7 @@ function Home() {
                         value={content}
                         onChange={setContent}
                         placeholder="Write your blog content here"
-                        style={{ height: "260px"}}
+                        style={{ height: "240px"}}
                         modules={{
                           toolbar: [
                             [{ header: "1" }, { header: "2" }, { font: [] }],
