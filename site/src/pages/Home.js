@@ -118,7 +118,7 @@ function Home() {
                 </p>
                 <div
                   dangerouslySetInnerHTML={{
-                    __html: post.content.substring(0, 160),
+                    __html: post.content.substring(0, 139),
                   }}
                 />
                 <br></br>
