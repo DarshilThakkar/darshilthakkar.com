@@ -47,12 +47,15 @@ function Home() {
   const handlePublishWithToast = async (e) => {
     await handlePublish(e);
     toast("Entry Published Successfully!! 🥳", {
-      description: "Thank you for keeping Community Active..😇",
+      description: "Thank you for keeping Community Active..😇 Now we are redirecting you to feed page...",
       action: {
         label: "Close",
         onClick: () => console.log("Close"),
       },
     });
+    setTimeout(() => {
+      window.location.pathname = "/";
+    }, 3000);
   };
 
   const [posts, setPosts] = useState([]);
@@ -102,7 +105,7 @@ function Home() {
         <br />
         <TabsContent value="feed" className="feed">
           <br></br>
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-3 gap-4 cc">
             {currentPosts.map((post) => (
               <div
                 key={post.id}
@@ -217,9 +220,9 @@ function Home() {
         <br />
         <TabsContent value="createentry" className="feed">
           {user ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 temp">
               <div
-                className="p-4 border rounded-md"
+                className="p-4 border border-white rounded-md"
                 style={{ height: "580px" }}
               >
                 <form className="space-y-6" onSubmit={handlePublish}>
@@ -248,7 +251,7 @@ function Home() {
                         value={content}
                         onChange={setContent}
                         placeholder="Write your blog content here"
-                        style={{ height: "300px" }} // Set the initial height here
+                        style={{ height: "300px"}}
                         modules={{
                           toolbar: [
                             [{ header: "1" }, { header: "2" }, { font: [] }],
@@ -266,8 +269,7 @@ function Home() {
                               { indent: "-1" },
                               { indent: "+1" },
                             ],
-                            ["link", "image", "video"],
-                            ["clean"],
+                            ["link", "image", "video", "clean"],
                           ],
                         }}
                         formats={[
@@ -291,11 +293,14 @@ function Home() {
                   </div>
                 </form>
               </div>
-              <div className="p-4 border rounded-md space-y-4">
-                <h2 className="text-xl font-semibold">Post Preview</h2>
+              <div className="p-4 border border-white rounded-md space-y-4">
+                <h2 className="text-xl font-semibold klas">Post Preview</h2>
+                <Button type="submit" onClick={handlePublishWithToast}>
+                  Publish
+                </Button>
                 <div
-                  className="border p-4 rounded-md h-96 overflow-auto"
-                  style={{ height: "450px" }}
+                  className="border border-white p-4 rounded-md h-96 overflow-auto"
+                  style={{ height: "475px" }}
                 >
                   <h3 className="text-2xl font-bold">{title}</h3>
                   <p className="text-sm text-gray-500">
@@ -309,9 +314,6 @@ function Home() {
                     dangerouslySetInnerHTML={{ __html: content }}
                   />
                 </div>
-                <Button type="submit" onClick={handlePublishWithToast}>
-                  Publish
-                </Button>
               </div>
             </div>
           ) : (

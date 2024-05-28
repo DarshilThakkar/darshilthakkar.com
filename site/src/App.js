@@ -23,17 +23,22 @@ import {
   DrawerTrigger,
 } from "./components/ui/drawer";
 
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "./components/ui/popover";
 
 import { cn } from "./lib/utils";
 import { Button } from "./components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "./components/ui/avatar";
 import Home from "./pages/Home";
-import Education from './pages/Education'
-import Experience from './pages/Experience'
-import Profiles from './pages/Profiles'
-import Projects from './pages/Projects'
-import Achievements from './pages/Achievements'
-import Skills from './pages/Skills'
+import Education from "./pages/Education";
+import Experience from "./pages/Experience";
+import Profiles from "./pages/Profiles";
+import Projects from "./pages/Projects";
+import Achievements from "./pages/Achievements";
+import Skills from "./pages/Skills";
 
 const components = [
   {
@@ -49,12 +54,14 @@ const components = [
   {
     title: "Profiles",
     href: "/pages/profiles",
-    description: "Click here to see my Codeforces, Leetcode, GitHub etc. Profiles",
+    description:
+      "Click here to see my Codeforces, Leetcode, GitHub etc. Profiles",
   },
   {
     title: "Projects",
     href: "/pages/projects",
-    description: "Click here to see my projects SimStocks, PostIt, WebWhisper etc..",
+    description:
+      "Click here to see my projects SimStocks, PostIt, WebWhisper etc..",
   },
   {
     title: "Skills",
@@ -68,31 +75,34 @@ const components = [
   },
 ];
 
-const ListItem = React.forwardRef(({ className, title, children, ...props }, ref) => {
-  return (
-    <li>
-      <NavigationMenuLink asChild>
-        <a
-          ref={ref}
-          className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-            className
-          )}
-          {...props}
-        >
-          <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-            {children}
-          </p>
-        </a>
-      </NavigationMenuLink>
-    </li>
-  );
-});
+const ListItem = React.forwardRef(
+  ({ className, title, children, ...props }, ref) => {
+    return (
+      <li>
+        <NavigationMenuLink asChild>
+          <a
+            ref={ref}
+            className={cn(
+              "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+              className
+            )}
+            {...props}
+          >
+            <div className="text-sm font-medium leading-none">{title}</div>
+            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+              {children}
+            </p>
+          </a>
+        </NavigationMenuLink>
+      </li>
+    );
+  }
+);
 ListItem.displayName = "ListItem";
 
 function App() {
   const [isAuth, setIsAuth] = useState(false);
+  const [isDark, setIsDark] = useState(true);
   const [user, setUser] = useState(null);
 
   const signInWithGoogle = () => {
@@ -103,6 +113,18 @@ function App() {
       setIsAuth(true);
       setUser(user);
     });
+  };
+
+  const enableDark = () => {
+    setIsDark(true);
+    const html = document.body;
+    html.classList.toggle("dark");
+  };
+
+  const enableLight = () => {
+    setIsDark(false);
+    const html = document.body;
+    html.classList.toggle("dark");
   };
 
   const signUserOut = () => {
@@ -123,11 +145,13 @@ function App() {
   }, []);
 
   return (
-    <div>
-      <NavigationMenu>
+    <div className="ourNav">
+      <NavigationMenu className="newcc">
         <NavigationMenuList>
           <NavigationMenuItem>
-            <NavigationMenuTrigger className="navbar-buttons">Darshil Thakkar</NavigationMenuTrigger>
+            <NavigationMenuTrigger className="navbar-buttons">
+              Darshil Thakkar
+            </NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                 <li className="row-span-3">
@@ -141,29 +165,41 @@ function App() {
                       </div>
                       <p className="text-sm leading-tight text-muted-foreground">
                         <div>Hello Everyone,</div>
-                        I am a focused and enthusiastic person, keen to learn new things.
-                        I have a keen interest in problem-solving and software development technologies.<hr />
-                        <div>
-                          Glad to know your feedbacks on this website!!
-                        </div>
+                        I am a focused and enthusiastic person, keen to learn
+                        new things. I have a keen interest in problem-solving
+                        and software development technologies.
+                        <hr />
+                        <div>Glad to know your feedbacks on this website!!</div>
                       </p>
                     </a>
                   </NavigationMenuLink>
                 </li>
-                <ListItem href="https://www.linkedin.com/in/darshilthakkar/" title="Let's Connect on LinkedIn">
+                <ListItem
+                  href="https://www.linkedin.com/in/darshilthakkar/"
+                  title="Let's Connect on LinkedIn"
+                >
                   Click here to see LinkedIn profile.🎯
                 </ListItem>
-                <ListItem href="https://www.instagram.com/darshil_2510_/" title="Follow me on Instagram 🛜">
+                <ListItem
+                  href="https://www.instagram.com/darshil_2510_/"
+                  title="Follow me on Instagram 🛜"
+                >
                   Click here to see me on Instagram...
                 </ListItem>
-                <ListItem href="https://twitter.com/Darshil_2510" title="Follow me on Twitter">
-                  Click here to see my tweets on Twitter...(Not Posted Any yet 😅)
+                <ListItem
+                  href="https://twitter.com/Darshil_2510"
+                  title="Follow me on Twitter"
+                >
+                  Click here to see my tweets on Twitter...(Not Posted Any yet
+                  😅)
                 </ListItem>
               </ul>
             </NavigationMenuContent>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <NavigationMenuTrigger  className="navbar-buttons">My Portfolio</NavigationMenuTrigger>
+            <NavigationMenuTrigger className="navbar-buttons">
+              My Portfolio
+            </NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                 {components.map((component) => (
@@ -181,9 +217,18 @@ function App() {
         </NavigationMenuList>
 
         <Drawer>
-        {isAuth && user ? (<DrawerTrigger className="main-menu"> You are <b className="live">LIVE</b> at 🛜 DARSHILTHAKKAR.COM</DrawerTrigger>):(
-          <DrawerTrigger className="main-menu"> You are <b className="offline">OFFLINE</b> at 🛜 DARSHILTHAKKAR.COM</DrawerTrigger>
-        )}
+          {isAuth && user ? (
+            <DrawerTrigger className="main-menu">
+              {" "}
+              {user.displayName} is <b className="live">LIVE</b> at 🛜
+              DARSHILTHAKKAR.COM
+            </DrawerTrigger>
+          ) : (
+            <DrawerTrigger className="main-menu">
+              {" "}
+              You are <b className="offline">OFFLINE</b> at 🛜 DARSHILTHAKKAR.COM
+            </DrawerTrigger>
+          )}
           <DrawerContent>
             <DrawerHeader>
               {isAuth ? (
@@ -194,12 +239,21 @@ function App() {
               <DrawerHeader>
                 {isAuth && user ? (
                   <div className="user-panel">
-                    <Avatar className = "user-panel-avtar">
+                    <Avatar className="user-panel-avtar">
                       <AvatarImage src={user.photoURL} alt={user.displayName} />
-                      <AvatarFallback>{user.displayName.charAt(0)}</AvatarFallback>
-                      </Avatar><br></br>
-                    <h1><b>{user.displayName}</b> is <b className="live"> Online </b> Now..🛜</h1>
-                      <h1> Email: <b>{user.email}</b></h1>
+                      <AvatarFallback>
+                        {user.displayName.charAt(0)}
+                      </AvatarFallback>
+                    </Avatar>
+                    <br></br>
+                    <h1>
+                      <b>{user.displayName}</b> is{" "}
+                      <b className="live"> Online </b> Now..🛜
+                    </h1>
+                    <h1>
+                      {" "}
+                      Email: <b>{user.email}</b>
+                    </h1>
                     <p></p>
                   </div>
                 ) : (
@@ -215,12 +269,40 @@ function App() {
           </DrawerContent>
         </Drawer>
 
+        <div className="pover">
+          <Popover>
+            <PopoverTrigger>Mode</PopoverTrigger>
+            <PopoverContent>
+              {isDark ? (
+                <Button variant="default" size="sm" onClick={enableLight}>
+                  Light Mode
+                </Button>
+              ) : (
+                <Button variant="default" size="sm" onClick={enableDark}>
+                  Dark Mode
+                </Button>
+              )}
+              <>{}</>Beta Mode 😅
+            </PopoverContent>
+          </Popover>
+        </div>
+
         {isAuth ? (
-          <Button variant="default" size="sm" className="right-nav-button-signout" onClick={signUserOut}>
+          <Button
+            variant="default"
+            size="sm"
+            className="right-nav-button-signout"
+            onClick={signUserOut}
+          >
             LogOut
           </Button>
         ) : (
-          <Button variant="default" size="sm" className="right-nav-buttons" onClick={signInWithGoogle}>
+          <Button
+            variant="default"
+            size="sm"
+            className="right-nav-buttons"
+            onClick={signInWithGoogle}
+          >
             LogIn
           </Button>
         )}
